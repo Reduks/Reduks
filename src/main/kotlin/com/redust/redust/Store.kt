@@ -4,7 +4,7 @@ class Store<out State>(initialState: State, initialReducer: (state: State, actio
 
     private val subscribers: MutableList<(State) -> Any?> = mutableListOf()
     private var isCurrentDispatching = false
-    private val reducer: (state: State, action: Action) -> State = enhancer?.enhance(initialReducer) ?: initialReducer
+    private val reducer: (state: State, action: Action) -> State = enhancer?.enhance(enhanceReducerWithDispatch(initialReducer)) ?: enhanceReducerWithDispatch(initialReducer)
     private var state: State = initialState
 
     fun subscribe(subscriber: (State) -> Any?): () -> Any? {
@@ -13,14 +13,15 @@ class Store<out State>(initialState: State, initialReducer: (state: State, actio
     }
 
     fun dispatch(action: Action) {
-        startDispatching()
-        reduce(action)
-        stopDispatching()
-        notifySubscribers()
+        reducer(state, action)
     }
 
-    private fun reduce(action: Action) {
-        state = reducer(state, action)
+    private fun enhanceReducerWithDispatch(reducer: (state: State, action: Action) -> State): (state: State, action: Action) -> State = { state, action ->
+        startDispatching()
+        val newState = reducer(state, action)
+        stopDispatching()
+        notifySubscribers()
+        newState
     }
 
     private fun notifySubscribers() {
