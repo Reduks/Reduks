@@ -4,7 +4,7 @@ class Store<out State>(initialState: State, initialReducer: (state: State, actio
 
     private val subscribers: MutableList<(State) -> Any?> = mutableListOf()
     private var isCurrentDispatching = false
-    private val reducer: (state: State, action: Action) -> State = enhancer?.enhance(enhanceReducerWithDispatch(initialReducer)) ?: enhanceReducerWithDispatch(initialReducer)
+    private val reducer: (state: State, action: Action) -> State = enhancer?.enhance(enhanceReducerWithDispatch(initialReducer), this) ?: enhanceReducerWithDispatch(initialReducer)
     private var state: State = initialState
 
     fun subscribe(subscriber: (State) -> Any?): () -> Any? {
