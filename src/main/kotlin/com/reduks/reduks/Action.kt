@@ -1,3 +1,5 @@
 package com.reduks.reduks
 
-interface Action
+interface Action<in State> {
+    fun action(state: State)
+}
