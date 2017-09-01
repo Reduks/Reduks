@@ -1,7 +1,7 @@
-package com.redust.redust
+package com.reduks.reduks
 
-import com.redust.redust.subscription.Subscriber
-import com.redust.redust.subscription.Subscription
+import com.reduks.reduks.subscription.Subscriber
+import com.reduks.reduks.subscription.Subscription
 
 class Store<out State>(initialState: State, initialReducer: (state: State, action: Action) -> State, enhancer: Enhancer<State>? = null) {
 

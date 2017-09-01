@@ -1,8 +1,8 @@
-package com.redust.redust.middleware
+package com.reduks.reduks.middleware
 
-import com.redust.redust.Action
-import com.redust.redust.Enhancer
-import com.redust.redust.Store
+import com.reduks.reduks.Action
+import com.reduks.reduks.Enhancer
+import com.reduks.reduks.Store
 
 class ApplyMiddleware<State>(private val middlewares: List<Middleware<State>>) : Enhancer<State> {
 

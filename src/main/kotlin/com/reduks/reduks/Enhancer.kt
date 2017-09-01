@@ -1,4 +1,4 @@
-package com.redust.redust
+package com.reduks.reduks
 
 interface Enhancer<State> {
 

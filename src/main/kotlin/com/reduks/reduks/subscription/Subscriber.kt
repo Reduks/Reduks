@@ -1,4 +1,4 @@
-package com.redust.redust.subscription
+package com.reduks.reduks.subscription
 
 interface Subscriber<in State> {
     fun stateChanged(state: State)
