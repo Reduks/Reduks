@@ -1,15 +1,18 @@
 package com.redust.redust
 
+import com.redust.redust.subscription.Subscriber
+import com.redust.redust.subscription.Subscription
+
 class Store<out State>(initialState: State, initialReducer: (state: State, action: Action) -> State, enhancer: Enhancer<State>? = null) {
 
-    private val subscribers: MutableList<(State) -> Any?> = mutableListOf()
+    private val subscribers: MutableList<Subscriber<State>> = mutableListOf()
     private var isCurrentDispatching = false
     private val reducer: (state: State, action: Action) -> State = enhancer?.enhance(enhanceReducerWithDispatch(initialReducer), this) ?: enhanceReducerWithDispatch(initialReducer)
     private var state: State = initialState
 
-    fun subscribe(subscriber: (State) -> Any?): () -> Any? {
+    fun subscribe(subscriber: Subscriber<State>): Subscription {
         subscribers.add(subscriber)
-        return { subscribers.remove(subscriber) }
+        return Subscription { subscribers.remove(subscriber) }
     }
 
     fun dispatch(action: Action) {
@@ -25,7 +28,7 @@ class Store<out State>(initialState: State, initialReducer: (state: State, actio
     }
 
     private fun notifySubscribers() {
-        subscribers.forEach { it(state) }
+        subscribers.forEach { it.stateChanged(state) }
     }
 
     private fun startDispatching() {
