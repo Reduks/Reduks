@@ -39,5 +39,4 @@ class Store<out State>(initialState: State, initialReducer: (state: State, actio
     private fun stopDispatching() {
         isCurrentDispatching = false
     }
-
 }
