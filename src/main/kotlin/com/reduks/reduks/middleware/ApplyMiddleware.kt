@@ -8,6 +8,6 @@ class ApplyMiddleware<State>(private val middlewares: List<Middleware<State>>) :
 
     constructor(vararg middlewares: Middleware<State>) : this(middlewares.asList())
 
-    override fun enhance(reducer: (State, Action) -> State, store: Store<State>): (State, Action) -> State =
+    override fun enhance(reducer: (State, Action<State>) -> State, store: Store<State>): (State, Action<State>) -> State =
         middlewares.fold(reducer) { acc, middleware -> middleware.compose(acc, store) }
 }
