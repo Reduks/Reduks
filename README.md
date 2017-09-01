@@ -1,2 +1,2 @@
-# Redust
-Simple Redux implementation in Kotlin
+# Reduks
+Simple Redux implementation in Kotlin apps
