@@ -3,7 +3,7 @@ package com.reduks.reduks
 import com.reduks.reduks.subscription.Subscriber
 import com.reduks.reduks.subscription.Subscription
 
-class Store<out State>(initialState: State, initialReducer: (state: State, action: Action<State>) -> State, enhancer: Enhancer<State>? = null) {
+class Store<State>(initialState: State, initialReducer: (state: State, action: Action<State>) -> State, enhancer: Enhancer<State>? = null) {
 
     private val subscribers: MutableList<Subscriber<State>> = mutableListOf()
     private var isCurrentDispatching = false
