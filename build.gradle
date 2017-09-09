@@ -88,8 +88,6 @@ dependencies {
     api 'org.apache.commons:commons-math3:3.6.1'
     implementation 'com.google.guava:guava:21.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
 }
 
 buildscript {
