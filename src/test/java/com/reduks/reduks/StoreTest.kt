@@ -18,17 +18,15 @@ class StoreTest : Spek({
     given("subscriptions") {
 
         val subscription = Subscription {
-            print("\nunsubscribed")
             assertTrue(true)
         }
+
         val subscriber = Subscriber<FakeState> { state ->
-            print("\n$state")
             assertTrue(state.name.toLowerCase().trim() == "bloder")
         }
 
         beforeEach {
             FakeData.store.subscribe(subscriber)
-            print("\nsubscribed")
         }
 
         it("should return a transformed state in subscriber state changed action") {
@@ -38,6 +36,13 @@ class StoreTest : Spek({
         it("confirm that unsubscribing works") {
             subscription.unsubscribe()
         }
-        
+
+        it("should return updated state when I get it from store") {
+            FakeData.store.subscribe(Subscriber {})
+            FakeData.store.dispatch(FakeActions.SetValidState())
+            assertTrue { FakeData.store.getState().name.trim().toLowerCase() == "bloder" }
+        }
+
     }
+
 })
