@@ -23,13 +23,13 @@ class Store<State>(initialState: State, initialReducer: (state: State, action: A
 
     private fun enhanceReducerWithDispatch(reducer: (state: State, action: Action<State>) -> State): (state: State, action: Action<State>) -> State = { state, action ->
         startDispatching()
-        val newState = reducer(state, action)
+        this.state = reducer(state, action)
         stopDispatching()
-        notifySubscribers(newState)
-        newState
+        notifySubscribers()
+        this.state
     }
 
-    private fun notifySubscribers(state: State) {
+    private fun notifySubscribers() {
         subscribers.forEach { it.stateChanged(state) }
     }
 
