@@ -37,6 +37,10 @@ class StoreTest : Spek({
             subscription.unsubscribe()
         }
 
+    }
+
+    given("store state") {
+
         it("should return updated state when I get it from store") {
             FakeData.store.subscribe(Subscriber {})
             FakeData.store.dispatch(FakeActions.SetValidState())
