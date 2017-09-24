@@ -20,4 +20,6 @@ sealed class FakeActions : Action<FakeState> {
     class SetValidState : FakeActions() {
         override fun action(state: FakeState): FakeState = FakeState(1, "Bloder")
     }
+
+    class EmptyAction : FakeActions()
 }
