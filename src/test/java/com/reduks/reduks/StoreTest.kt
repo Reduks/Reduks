@@ -47,6 +47,13 @@ class StoreTest : Spek({
             assertTrue { FakeData.store.getState().name.trim().toLowerCase() == "bloder" }
         }
 
+        it("should return last updated state when call an empty action") {
+            FakeData.store.subscribe(Subscriber {})
+            FakeData.store.dispatch(FakeActions.SetValidState())
+            FakeData.store.dispatch(FakeActions.EmptyAction())
+            assertTrue { FakeData.store.getState().name.trim().toLowerCase() == "bloder" }
+        }
+
     }
 
 })
