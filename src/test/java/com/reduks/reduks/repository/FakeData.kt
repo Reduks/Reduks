@@ -12,9 +12,7 @@ class FakeData {
                 { state, action -> action.action(state) }
         )
 
-        val storeWithDslBuilder = reduksStore<FakeState> {
-            initialState = FakeState(0, "")
-        }
+        val storeWithDslBuilder = reduksStore<FakeState> {}
     }
 }
 
