@@ -18,7 +18,9 @@ class FakeData {
     }
 }
 
-data class FakeState(val id: Int, val name: String)
+data class FakeState(val id: Int = 0, val name: String = "")
+data class MyStateWithDefaultValue(val state: FakeState? = null)
+data class StateWithNoDefaultValue(val state: FakeState)
 
 sealed class FakeActions : Action<FakeState> {
 
