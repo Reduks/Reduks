@@ -2,6 +2,7 @@ package com.reduks.reduks.repository
 
 import com.reduks.reduks.Action
 import com.reduks.reduks.Store
+import com.reduks.reduks.reduksStore
 
 class FakeData {
 
@@ -10,6 +11,10 @@ class FakeData {
                 FakeState(0, ""),
                 { state, action -> action.action(state) }
         )
+
+        val storeWithDslBuilder = reduksStore<FakeState> {
+            initialState = FakeState(0, "")
+        }
     }
 }
 
