@@ -50,7 +50,7 @@ class MainClass {
 ```
 
 ## Inspiration
-Reduks was inspired in some other tools, and we'd like to thank you all of them
+Reduks was inspired in some other tools, and we'd like to thank all of them
 
 * React Native - https://facebook.github.io/react-native/
 
