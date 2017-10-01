@@ -48,3 +48,14 @@ class MainClass {
   }
 }
 ```
+
+## Inspiration
+Reduks was inspired in some other tools, and we'd like to thank you all of them
+
+* React Native - https://facebook.github.io/react-native/
+
+* Redux - http://redux.js.org/
+
+* ReSwift - https://github.com/ReSwift/ReSwift
+
+* redux-kotlin - https://github.com/pardom/redux-kotlin
