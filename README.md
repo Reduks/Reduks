@@ -49,6 +49,30 @@ class MainClass {
 }
 ```
 
+## Import
+
+##### Gradle 
+```groovy
+compile 'com.reduks:reduks:0.1.1'
+```
+
+##### Maven
+```xml
+<dependency>
+  <groupId>com.reduks</groupId>
+  <artifactId>reduks</artifactId>
+  <version>0.1.1</version>
+  <type>pom</type>
+</dependency>
+```
+
+##### ivy
+```xml
+<dependency org='com.reduks' name='reduks' rev='0.1.1'>
+  <artifact name='reduks' ext='pom' ></artifact>
+</dependency>
+```
+
 ## Inspiration
 Reduks was inspired in some other tools, and we'd like to thank all of them
 
