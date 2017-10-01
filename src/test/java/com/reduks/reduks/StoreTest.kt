@@ -54,6 +54,49 @@ class StoreTest : Spek({
             assertTrue { FakeData.store.getState().name.trim().toLowerCase() == "bloder" }
         }
 
+        it("should return updated state with store in a default reducer implementation") {
+            val store = Store(
+                    FakeState(0, ""),
+                    { state, action -> when(action) {
+                        is FakeActions.EmptyAction -> FakeState(0, "")
+                        is FakeActions.SetValidState -> FakeState(1, "Bloder")
+                        else -> state
+                    }}
+            )
+            store.dispatch(FakeActions.SetValidState())
+            assertTrue { store.getState().name.trim().toLowerCase() == "bloder" }
+        }
+
+    }
+
+    given("store dsl creation") {
+
+        it("should return correct state when change it value") {
+            FakeData.storeWithDslBuilder.subscribe(Subscriber { state -> assertTrue { state.name.trim().toLowerCase() == "bloder" } })
+            FakeData.storeWithDslBuilder.dispatch(FakeActions.SetValidState())
+        }
+
+        it("should return correct state when it has an action with no logic") {
+            FakeData.storeWithDslBuilder.subscribe(Subscriber {})
+            FakeData.storeWithDslBuilder.dispatch(FakeActions.SetValidState())
+            FakeData.storeWithDslBuilder.dispatch(FakeActions.EmptyAction())
+            assertTrue { FakeData.storeWithDslBuilder.getState().name.trim().toLowerCase() == "bloder" }
+        }
+
+        it("should return updated state with store dsl in a default reducer implementation") {
+            val store = reduksStore<FakeState> {
+                initialState = FakeState(0, "")
+                initialReducer = { state, action -> when(action) {
+                    is FakeActions.SetValidState -> FakeState(1, "Bloder")
+                    is FakeActions.EmptyAction -> state
+                    else -> state
+                }}
+            }
+            store.subscribe(Subscriber { state -> assertTrue { state.name.trim().toLowerCase() == "bloder" }})
+            store.dispatch(FakeActions.SetValidState())
+            store.dispatch(FakeActions.EmptyAction())
+        }
+
     }
 
 })
