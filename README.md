@@ -53,7 +53,7 @@ class MainClass {
 
 ##### Gradle 
 ```groovy
-compile 'com.reduks:reduks:0.1.1'
+compile 'com.reduks:reduks:0.1.2'
 ```
 
 ##### Maven
@@ -61,14 +61,14 @@ compile 'com.reduks:reduks:0.1.1'
 <dependency>
   <groupId>com.reduks</groupId>
   <artifactId>reduks</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
   <type>pom</type>
 </dependency>
 ```
 
 ##### Ivy
 ```xml
-<dependency org='com.reduks' name='reduks' rev='0.1.1'>
+<dependency org='com.reduks' name='reduks' rev='0.1.2'>
   <artifact name='reduks' ext='pom' ></artifact>
 </dependency>
 ```
