@@ -76,8 +76,6 @@ compile 'com.reduks:reduks:0.1.1'
 ## Inspiration
 Reduks was inspired in some other tools, and we'd like to thank all of them
 
-* React Native - https://facebook.github.io/react-native/
-
 * Redux - http://redux.js.org/
 
 * ReSwift - https://github.com/ReSwift/ReSwift
