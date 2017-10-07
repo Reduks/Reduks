@@ -27,13 +27,13 @@ sealed class StateActions : Action<State> {
 Then we just need to create our store.
 
 ```kotlin
-fun Any.store() : Store<State> = Store(
-  State(""),
-  { state, action -> when(action) {
+fun Any.store() : Store<State> = reduksStore {
+  initialState = State(""),
+  initialReducer = { state, action -> when(action) {
     is ChangeTextTo -> State(action.text)
     else -> state
   }}
-)
+}
 ```
 <br>
 
