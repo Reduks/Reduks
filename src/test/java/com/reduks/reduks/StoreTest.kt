@@ -121,4 +121,13 @@ class StoreTest : Spek({
 
     }
 
+    given("Store dispatching") {
+
+        it("should return dispatch given action") {
+            val action = FakeActions.SetValidState()
+            assertTrue { reduksStore<FakeState>{}.dispatch(action) == action }
+        }
+
+    }
+
 })

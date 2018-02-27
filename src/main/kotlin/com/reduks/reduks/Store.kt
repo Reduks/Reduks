@@ -15,8 +15,9 @@ class Store<State>(initialState: State, initialReducer: (state: State, action: A
         return Subscription { subscribers.remove(subscriber) }
     }
 
-    fun dispatch(action: Action<State>) {
+    fun dispatch(action: Action<State>) : Action<State> {
         reducer(state, action)
+        return action;
     }
 
     fun getState() : State = state
