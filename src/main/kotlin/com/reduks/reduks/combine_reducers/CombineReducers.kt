@@ -8,9 +8,8 @@ import com.reduks.reduks.Action
 
 class CombineReducers<State>(private val reducers: Array<out (State, Action<State>) -> State>) {
 
-    fun combine() : (State, Action<State>) -> State = fun (initialState: State, action: Action<State>) : State = reducers.fold(initialState) { acc, reducer ->
-        val currentState = reducer(acc, action)
-        if (currentState != acc) currentState else acc
+    fun combine() : (State, Action<State>) -> State = reducers.fold({ state, _ -> state }) { acc, reducer ->
+        { state, action -> acc(reducer(state, action), action) }
     }
 }
 
