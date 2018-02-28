@@ -4,7 +4,7 @@
 Reduks is an implementation of redux concept for Kotlin applications. It permits to create stores, states, actions and middlwares in an easy way. All redux concept documentation you can easily find in http://redux.js.org/
 
 ## Reduks implementation
-all reduks components documentation can be easily find in https://github.com/Reduks/Reduks/wiki/Reduks <br>
+all reduks components documentation can be easily find in https://github.com/Reduks/Reduks/wiki <br>
 Well, let's develop a hello world! 
 <br><br>
 First of all we need to create our state.
