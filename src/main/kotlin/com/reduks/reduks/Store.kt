@@ -17,7 +17,7 @@ class Store<State>(initialState: State, initialReducer: (state: State, action: A
 
     fun dispatch(action: Action<State>) : Action<State> {
         reducer(state, action)
-        return action;
+        return action
     }
 
     fun getState() : State = state
