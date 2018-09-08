@@ -27,7 +27,7 @@ sealed class StateActions : Action<State> {
 Then we just need to create our store.
 
 ```kotlin
-fun Any.store() : Store<State> = reduksStore {
+fun store() : Store<State> = reduksStore {
   initialState = State(""),
   initialReducer = { state, action -> when(action) {
     is ChangeTextTo -> State(action.text)
@@ -53,7 +53,7 @@ class MainClass {
 
 ##### Gradle 
 ```groovy
-compile 'com.reduks:reduks:0.1.3'
+implementation 'com.reduks:reduks:0.1.3'
 ```
 
 ##### Maven
